@@ -17,10 +17,6 @@ import java.awt.Font;
 import java.awt.Color;
 public class loginn {
 
-	private JFrame frame;
-	private JTextField textFieldUN;
-	private JPasswordField passwordField;
-
 	/**
 	 * Launch the application.
 	 */
@@ -36,8 +32,11 @@ public class loginn {
 			}
 		});
 	}
+	private JFrame frame;
+	private JTextField textFieldUN;
+	private JPasswordField passwordField;
+
 	Connection connection=null;
-	private JTextField txtSample;
 	/**
 	 * Create the application.
 	 */
@@ -125,14 +124,5 @@ public class loginn {
 		lblEnterYourUsername.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblEnterYourUsername.setBounds(107, 13, 279, 34);
 		frame.getContentPane().add(lblEnterYourUsername);
-		
-		txtSample = new JTextField();
-		txtSample.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		txtSample.setBounds(326, 279, 116, 22);
-		frame.getContentPane().add(txtSample);
-		txtSample.setColumns(10);
 	}
 }
