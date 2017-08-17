@@ -47,7 +47,7 @@ public class Issuebook extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnIssueBook = new JButton("Issue Book");
-		btnIssueBook.setBackground(Color.RED);
+		btnIssueBook.setBackground(Color.LIGHT_GRAY);
 		btnIssueBook.setForeground(Color.BLACK);
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -65,7 +65,7 @@ public class Issuebook extends JFrame {
 		contentPane.add(btnIssueBook);
 		
 		JButton btnReturnBook = new JButton("Return Book");
-		btnReturnBook.setBackground(Color.RED);
+		btnReturnBook.setBackground(Color.LIGHT_GRAY);
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				this.setvisible(true);
@@ -82,7 +82,7 @@ public class Issuebook extends JFrame {
 		contentPane.add(btnReturnBook);
 		
 		JButton btnLogout = new JButton("LogOut");
-		btnLogout.setBackground(Color.RED);
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 {	 

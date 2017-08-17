@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Color;
 public class loginn {
 
 	private JFrame frame;
@@ -50,22 +51,24 @@ public class loginn {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frame.setBounds(100, 100, 507, 414);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Username");
+		JLabel lblNewLabel = new JLabel("Username:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel.setBounds(69, 81, 103, 34);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Password");
+		JLabel lblNewLabel_1 = new JLabel("Password:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setBounds(69, 204, 83, 16);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		textFieldUN = new JTextField();
+		textFieldUN.setBackground(Color.WHITE);
 		textFieldUN.setBounds(279, 78, 163, 34);
 		frame.getContentPane().add(textFieldUN);
 		textFieldUN.setColumns(10);
@@ -88,7 +91,6 @@ public class loginn {
 					 }
 					 if(count==1)   
 					 {	 
-						 txtSample.setText(textFieldUN.getText());
 						 JOptionPane.showMessageDialog(null, "Username and Password is correct");
 						 frame.dispose();
 						 Issuebook Issbook=new Issuebook();
@@ -125,7 +127,11 @@ public class loginn {
 		frame.getContentPane().add(lblEnterYourUsername);
 		
 		txtSample = new JTextField();
-		txtSample.setBounds(319, 273, 116, 22);
+		txtSample.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		txtSample.setBounds(326, 279, 116, 22);
 		frame.getContentPane().add(txtSample);
 		txtSample.setColumns(10);
 	}

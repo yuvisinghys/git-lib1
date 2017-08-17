@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Return extends JFrame {
 
@@ -48,18 +49,19 @@ public class Return extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblIsbnNo = new JLabel("ISBN No.");
+		JLabel lblIsbnNo = new JLabel("ISBN No.:");
 		lblIsbnNo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblIsbnNo.setBounds(70, 30, 68, 16);
 		contentPane.add(lblIsbnNo);
 		
-		JLabel lblReturnDate = new JLabel("Return Date");
+		JLabel lblReturnDate = new JLabel("Return Date:");
 		lblReturnDate.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblReturnDate.setBounds(70, 88, 79, 16);
+		lblReturnDate.setBounds(70, 88, 108, 16);
 		contentPane.add(lblReturnDate);
 		
 		textField = new JTextField();
@@ -76,19 +78,23 @@ public class Return extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String query="select * from BookDetail1 where IsbnNo=? and ReturnDate=? and Duedate=?";
+					String query="select * from BookDetail1 where IsbnNo=?";
 					 PreparedStatement pst=connection.prepareStatement(query);
 					 pst.setString(1, textField.getText() );
-					 pst.setString(2, textField_1.getText() );
-					 pst.setString(3, textField_2.getText() );
+//					 pst.setString(2, textField_1.getText() );
+//					 pst.setString(3, textField_2.getText() );
                      
 					 ResultSet rs=pst.executeQuery();
 					 int count =0;
 					 while(rs.next() ) {
 						 count=count+1;
+						 textField_1.setText(rs.getString(5));
+						 textField_2.setText(rs.getString(6));
 					 }
 					 if(count==1)   
 					 {	 
+						 
+						 
 						 JOptionPane.showMessageDialog(null, "Your Book Returned");
 					 }
 					 else if(count>1)
@@ -113,7 +119,7 @@ public class Return extends JFrame {
 		btnNewButton.setBounds(136, 205, 129, 35);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Due Date");
+		JLabel lblNewLabel = new JLabel("Due Date:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(70, 138, 79, 16);
 		contentPane.add(lblNewLabel);
@@ -132,7 +138,7 @@ public class Return extends JFrame {
 			}
 		});
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnBack.setBounds(335, 210, 97, 25);
+		btnBack.setBounds(323, 210, 97, 25);
 		contentPane.add(btnBack);
 	}
 }

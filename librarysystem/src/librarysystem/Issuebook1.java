@@ -6,6 +6,7 @@ import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.Caret;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -54,22 +55,22 @@ public class Issuebook1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblIsbnNo = new JLabel("Isbn No.");
+		JLabel lblIsbnNo = new JLabel("Isbn No.:");
 		lblIsbnNo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblIsbnNo.setBounds(52, 32, 68, 16);
 		contentPane.add(lblIsbnNo);
 		
-		JLabel lblBookName = new JLabel("Book Name");
+		JLabel lblBookName = new JLabel("Book Name:");
 		lblBookName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblBookName.setBounds(52, 82, 91, 16);
 		contentPane.add(lblBookName);
 		
-		JLabel lblAuthor = new JLabel("Author");
+		JLabel lblAuthor = new JLabel("Author:");
 		lblAuthor.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblAuthor.setBounds(52, 126, 68, 16);
 		contentPane.add(lblAuthor);
 		
-		JLabel lblIssueDate = new JLabel("Issue Date");
+		JLabel lblIssueDate = new JLabel("Issue Date:");
 		lblIssueDate.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblIssueDate.setBounds(52, 168, 78, 16);
 		contentPane.add(lblIssueDate);
@@ -98,23 +99,23 @@ public class Issuebook1 extends JFrame {
 		btnIssueBook.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
-					
 					try {
-						String query="select * from BookDetail1 where IsbnNo=? and BookName=? and AuthorName=? and IssueDate=?";
+						String query="select * from BookDetail1 where IsbnNo=?";
 						 PreparedStatement pst=connection.prepareStatement(query);
-						 pst.setString(1, txtIsbnnum.getText() );
-						 pst.setString(2, txtbooknam.getText() );
-						 pst.setString(3, textField_2.getText() );
-						 pst.setString(4, textField_3.getText() );
+						 pst.setString(1, txtIsbnnum.getText() );					 
 	                     
 						 ResultSet rs=pst.executeQuery();
 						 int count =0;
 						 while(rs.next() ) {
 							 count=count+1;
+							 txtbooknam.setText(rs.getString(2));
+							 textField_2.setText(rs.getString(3));
+							 textField_3.setText(rs.getString(4));
 						 }
 						 if(count==1)   
 						 {	 
+//							
+							 
 							 JOptionPane.showMessageDialog(null, "Your Book Issued");
 						 }
 						 else if(count>1)
